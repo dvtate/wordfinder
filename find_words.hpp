@@ -3,6 +3,8 @@
 
 #include <string.h>
 
+#include "utils.hpp"
+
 extern uint16_t rows, cols;
 extern char** game;
 extern bool** solutions;
@@ -24,26 +26,7 @@ namespace horizontal {
 };
 
 
-void findWords(void){
-
-	char* word = strtok(words, " ");
-	for (;;) {
-		if (word == NULL)
-			return;
-
-		std::cout <<"Finding word - \"" <<word <<"\"\n";
-
-
-
-
-
-
-
-		word = strtok(NULL, " ");
-
-
-	}
-}
+void findWords(void);
 
 #endif
 

@@ -3,7 +3,6 @@
 #include <inttypes.h>
 #include <iostream>
 
-
 #include "utils.hpp"
 #include "find_words.hpp"
 
@@ -21,8 +20,8 @@ int main(){
 	std::cin >>cols;
 
 
-	game = (char**) malloc(rows);
-	solutions = (bool**) malloc(rows);
+	game = (char**) malloc(rows + 1);
+	solutions = (bool**) malloc(rows + 1);
 
 	for (uint16_t r = 0; r < rows; r++) {
 		*(game + r) = (char*) malloc(cols);
@@ -33,8 +32,8 @@ int main(){
 				letter = getchar();
 			while (letter == '\n' || letter == ' ');
 
-			charAt(game, r, c) = letter;
-			charAt(solutions, r, c) = false;
+			CHAR_AT(game, r, c) = letter;
+			CHAR_AT(solutions, r, c) = false;
 		}
 	}
 
@@ -56,6 +55,28 @@ int main(){
 			return 2; // EOF
 	while (*words == '\n');
 
+	char* str = words;
+	while(*++str != '\0');
+
+	if (*--str == '\n')
+		*str = '\0';
+
 
 	findWords();
+
+	// print the board with solutions highlighted in red
+	putchar('\n');
+	for (uint16_t r = 0; r < rows; r++) {
+		putchar('\n');
+		for (uint16_t c = 0; c < cols; c++)
+			if (CHAR_AT(solutions, r, c) == true)
+				// print the solutions in bright red
+				printf("\x1B[31;1m%c\x1B[0m", CHAR_AT(game, r, c));
+
+			else
+				putchar(CHAR_AT(game, r, c));
+	}
+
+
+	std::cout <<std::endl;
 }
