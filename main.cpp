@@ -20,12 +20,12 @@ int main(){
 	std::cin >>cols;
 
 
-	game = (char**) malloc(rows + 1);
-	solutions = (bool**) malloc(rows + 1);
+	game = (char**) malloc(rows * sizeof(char**));
+	solutions = (bool**) malloc(rows * sizeof(bool**));
 
 	for (uint16_t r = 0; r < rows; r++) {
-		*(game + r) = (char*) malloc(cols);
-		*(solutions + r) = (bool*) malloc(cols);
+		*(game + r) = (char*) malloc(cols * sizeof(char*));
+		*(solutions + r) = (bool*) malloc(cols* sizeof(bool*));
 		for (uint16_t c = 0; c < cols; c++) {
 			char letter;
 			do
@@ -71,10 +71,10 @@ int main(){
 		for (uint16_t c = 0; c < cols; c++)
 			if (CHAR_AT(solutions, r, c) == true)
 				// print the solutions in bright red
-				printf("\x1B[31;1m%c\x1B[0m", CHAR_AT(game, r, c));
+				printf("\x1B[31;1m%c\x1B[0m ", CHAR_AT(game, r, c));
 
 			else
-				putchar(CHAR_AT(game, r, c));
+				printf("%c ",CHAR_AT(game, r, c));
 	}
 
 

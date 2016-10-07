@@ -26,8 +26,6 @@ namespace diagonal {
 			else if (CHAR_AT(game, row - i, col + i) != *(word + i))
 				return false;
 
-		std::cout <<"found word \"" <<word <<"\"\n";
-
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
 			CHAR_AT(solutions, row - i, col + i) = true;
@@ -41,8 +39,6 @@ namespace diagonal {
 				return false;
 			else if (CHAR_AT(game, row + i, col + i) != *(word + i))
 				return false;
-
-		std::cout <<"found word \"" <<word <<"\"\n";
 
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
@@ -59,8 +55,6 @@ namespace diagonal {
 			else if (CHAR_AT(game, row - i, col - i) != *(word + i))
 				return false;
 
-		std::cout <<"found word \"" <<word <<"\"\n";
-
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
 			CHAR_AT(solutions, row - i, col - i) = true;
@@ -74,8 +68,6 @@ namespace diagonal {
 				return false;
 			else if (CHAR_AT(game, row + i, col - i) != *(word + i))
 				return false;
-
-		std::cout <<"found word \"" <<word <<"\"\n";
 
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
@@ -95,8 +87,6 @@ namespace horizontal {
 			else if (CHAR_AT(game, row - i, col) != *(word + i))
 				return false;
 
-		std::cout <<"found word \"" <<word <<"\"\n";
-
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
 			CHAR_AT(solutions, row - i, col) = true;
@@ -111,8 +101,6 @@ namespace horizontal {
 				return false;
 			else if (CHAR_AT(game, row + i, col) != *(word + i))
 				return false;
-
-		std::cout <<"found word \"" <<word <<"\"\n";
 
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
@@ -129,8 +117,6 @@ namespace horizontal {
 			else if (CHAR_AT(game, row, col - i) != *(word + i))
 				return false;
 
-		std::cout <<"found word \"" <<word <<"\"\n";
-
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
 			CHAR_AT(solutions, row, col - i) = true;
@@ -146,7 +132,6 @@ namespace horizontal {
 			else if (CHAR_AT(game, row, col + i) != *(word + i))
 				return false;
 
-		std::cout <<"found word \"" <<word <<"\"\n";
 		// paint word on board
 		for (uint16_t i = 0; i < strlen(word); i++)
 			CHAR_AT(solutions, row, col + i) = true;
@@ -198,10 +183,7 @@ void findWords(void){
 
 		std::cout <<"\aWarning: couldn\'t find word \"" <<word <<"\"\n";
 
-
 next_word:
-
-
 		word = strtok(NULL, " ");
 
 
