@@ -34,12 +34,12 @@ int main(int argc, char** argv){
 
 	if (!silent) puts("\n\nEnter the puzzle (spaces and newlines ignored):\n");
 
-	game = (char**) malloc(rows * sizeof(char**));
-	solutions = (bool**) malloc(rows * sizeof(bool**));
+	game = (char**) malloc(rows * sizeof(char*));
+	solutions = (bool**) malloc(rows * sizeof(bool*));
 
 	for (uint16_t r = 0; r < rows; r++) {
-		*(game + r) = (char*) malloc(cols * sizeof(char*));
-		*(solutions + r) = (bool*) malloc(cols* sizeof(bool*));
+		*(game + r) = (char*) malloc(cols);
+		*(solutions + r) = (bool*) malloc(cols);
 		for (uint16_t c = 0; c < cols; c++) {
 			char letter;
 			do
@@ -95,4 +95,3 @@ int main(int argc, char** argv){
 	putc('\n', stdout);
 
 }
-
