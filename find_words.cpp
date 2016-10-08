@@ -76,7 +76,7 @@ namespace diagonal {
 		return true;
 	}
 
-};
+}
 
 namespace horizontal {
 	bool up(const char* word, const uint16_t& row, const uint16_t& col){
@@ -140,7 +140,7 @@ namespace horizontal {
 		return true;
 	}
 
-};
+}
 
 
 
@@ -157,6 +157,7 @@ void findWords(void){
 			for (uint16_t c = 0; c < cols; c++) {
 				// if the first letter of the word is found
 				if (CHAR_AT(game, r, c) == *word) {
+
 					// see if the rest of the word is there
 					if (diagonal::upRight(word, r, c))
 						goto next_word;

@@ -16,14 +16,14 @@ namespace diagonal {
 	bool downRight(const char* word, const uint16_t& row, const uint16_t& col);
 	bool upLeft(const char* word, const uint16_t& row, const uint16_t& col);
 	bool downLeft(const char* word, const uint16_t& row, const uint16_t& col);
-};
+}
 
 namespace horizontal {
 	bool up(const char* word, const uint16_t& row, const uint16_t& col);
 	bool down(const char* word, const uint16_t& row, const uint16_t& col);
 	bool left(const char* word, const uint16_t& row, const uint16_t& col);
 	bool right(const char* word, const uint16_t& row, const uint16_t& col);
-};
+}
 
 
 void findWords(void);
