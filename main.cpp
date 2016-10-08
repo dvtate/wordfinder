@@ -6,14 +6,21 @@
 #include "utils.hpp"
 #include "find_words.hpp"
 
+
+// this adds windows support (needed since windows isn't postix-compatible)
+#include "fuck_windows.h"
+
 uint16_t rows, cols;
 char** game;
 bool** solutions;
 char* words;
 size_t words_len = 64;
 
-int main(){
+int main(int argc, char** args){
 
+	if (argc == 2) {
+
+	}
 	std::cout <<"Number of rows: ";
 	std::cin >>rows;
 	std::cout <<"Number of cols: ";
