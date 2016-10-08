@@ -5,8 +5,7 @@ extern uint16_t rows, cols;
 extern char** game;
 
 // ppm is better imo
-#define CHAR_AT(MAT, ROW, COL)\
-	*(*((MAT) + (ROW)) + (COL))
+#define CHAR_AT(MAT, ROW, COL)		*(*((MAT) + (ROW)) + (COL))
 
 inline char& charAt(const uint16_t& row, const uint16_t& col)
 	{ return *(*(game + row) + col); }

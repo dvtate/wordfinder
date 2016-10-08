@@ -11,7 +11,6 @@ void deleteNewline(char* str){
 	for (uint16_t i = 0; i < strlen(str); i++, str++);
 	if (*str == '\n')
 		*str = '\0';
-
 }
 
 

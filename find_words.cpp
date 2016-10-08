@@ -146,7 +146,7 @@ namespace horizontal {
 
 void findWords(void){
 
-	char* word = strtok(words, " ");
+	char* word = strtok(words, " ,");
 	while (word && *word) {
 
 		//std::cout <<"Finding word - \"" <<word <<"\"\n";
@@ -181,10 +181,10 @@ void findWords(void){
 
 			}
 
-		std::cout <<"\aWarning: couldn\'t find word \"" <<word <<"\"\n";
+		printf("\aWarning: couldn\'t find word \"%s\"\n", word);
 
 next_word:
-		word = strtok(NULL, " ");
+		word = strtok(NULL, " ,");
 
 
 	}

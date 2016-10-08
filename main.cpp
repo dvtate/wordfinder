@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <inttypes.h>
-#include <iostream>
+#include <ctype.h>
+#include <time.h>
 
 #include "utils.hpp"
 #include "find_words.hpp"
@@ -16,16 +17,22 @@ bool** solutions;
 char* words;
 size_t words_len = 64;
 
-int main(int argc, char** args){
+FILE* inputFile = stdin;
+bool silent = false;
+int main(int argc, char** argv){
 
 	if (argc == 2) {
-
+		inputFile = fopen(argv[1], "r");
+		silent = true;
 	}
-	std::cout <<"Number of rows: ";
-	std::cin >>rows;
-	std::cout <<"Number of cols: ";
-	std::cin >>cols;
 
+	if (!silent) printf("Number of rows: ");
+	fscanf(inputFile, "%hu", &rows); // uint16_t == unsigned short ( "%hu" )
+
+	if (!silent) printf("Number of cols: ");
+	fscanf(inputFile, "%hu", &cols);
+
+	if (!silent) puts("\n\nEnter the puzzle (spaces and newlines ignored):\n");
 
 	game = (char**) malloc(rows * sizeof(char**));
 	solutions = (bool**) malloc(rows * sizeof(bool**));
@@ -36,29 +43,22 @@ int main(int argc, char** args){
 		for (uint16_t c = 0; c < cols; c++) {
 			char letter;
 			do
-				letter = getchar();
-			while (letter == '\n' || letter == ' ');
+				letter = fgetc(inputFile);
+			while (letter == '\n' || isspace(letter));
 
 			CHAR_AT(game, r, c) = letter;
 			CHAR_AT(solutions, r, c) = false;
 		}
 	}
 
-	/*
-	putchar('\n');
-	for (uint16_t r = 0; r < rows; r++) {
-		putchar('\n');
-		for (uint16_t c = 0; c < cols; c++)
-			putchar(charAt(game, r, c));
-	}*/
-	std::cout <<std::endl <<"Enter the words to find (separated by spaces): ";
+	if (!silent) printf("Enter the words to find (separated by spaces): ");
 
 
 
 
 	words = (char*) malloc(64);
 	do
-		if (getline(&words, &words_len, stdin) == -1)
+		if (getline(&words, &words_len, inputFile) == -1)
 			return 2; // EOF
 	while (*words == '\n');
 
@@ -69,21 +69,30 @@ int main(int argc, char** args){
 		*str = '\0';
 
 
+	// time how long it takes to solve the puzzle
+	clock_t diff, start = clock();
 	findWords();
+	diff = clock() - start;
 
-	// print the board with solutions highlighted in red
+	int msec = diff * 1000000 / CLOCKS_PER_SEC;
+
+	printf("\nsolved in %d milliseconds %d microseconds", msec/1000, msec%1000);
+
+	// print the board with solutions highlighted in bright-red
 	putchar('\n');
 	for (uint16_t r = 0; r < rows; r++) {
 		putchar('\n');
 		for (uint16_t c = 0; c < cols; c++)
 			if (CHAR_AT(solutions, r, c) == true)
-				// print the solutions in bright red
+				// print the solutions in bright-red
 				printf("\x1B[31;1m%c\x1B[0m ", CHAR_AT(game, r, c));
 
 			else
 				printf("%c ",CHAR_AT(game, r, c));
 	}
 
+	// terminating newlines are nice
+	putc('\n', stdout);
 
-	std::cout <<std::endl;
 }
+
