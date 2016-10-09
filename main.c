@@ -6,6 +6,7 @@
 
 #include "utils.h"
 #include "find_words.h"
+#include "version_info.h"
 
 
 // this adds windows support (needed since windows isn't postix-compatible)
@@ -23,10 +24,25 @@ int main(int argc, char** argv){
 	FILE* inputFile = stdin;
 
   	if (argc == 2) {
+	  	if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
+			printVersionInfo();
+		  	return 0;
+		} else if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
+			puts("useage: wordfinder [file|options]\n"
+				 "  --help : show this help\n"
+				 "  --version : prints the version and lisense info\n"
+				 "  [file] : file must contain the dimensions separate by spaces,"
+				 " the puzzle, and the words to find separated by spaces, just as"
+				 " one would input without the file.\n\n"
+			);
+		  	return 0;
+		}
+
 		inputFile = fopen(argv[1], "r");
 		silent = 1;
 	}
 
+	/// TODO: program must ERROR if the file doesn't contain enough information
 	if (!silent) printf("Number of rows: ");
 	fscanf(inputFile, "%hu", &rows); // uint16_t == unsigned short ( "%hu" )
 
