@@ -44,11 +44,19 @@ int main(int argc, char** argv){
 
 	/// TODO: program must ERROR if the file doesn't contain enough information
 	if (!silent) printf("Number of rows: ");
-	fscanf(inputFile, "%hu", &rows); // uint16_t == unsigned short ( "%hu" )
+	if (fscanf(inputFile, "%hu", &rows) == EOF) { 	// uint16_t == unsigned short ( "%hu" )
+		perror("\aERROR: Malformed input file (missing dimension)");
+		printFileHelper();
+		return 1;
+	}
+
 
 	if (!silent) printf("Number of cols: ");
-	fscanf(inputFile, "%hu", &cols);
-
+	if (fscanf(inputFile, "%hu", &cols) == EOF) {
+		perror("\aERROR: Malformed input file (missing dimension)");
+		printFileHelper();
+		return 1;
+	}
 	if (!silent) puts("\n\nEnter the puzzle (spaces and newlines ignored):\n");
 
 	game = (char**) malloc(rows * sizeof(char*));
@@ -62,6 +70,11 @@ int main(int argc, char** argv){
 			do
 				letter = fgetc(inputFile);
 			while (letter == '\n' || isspace(letter));
+			if (letter == EOF) {
+				perror("\aERROR: Malformed input file (incomplete puzzle)\n");
+				printFileHelper();
+				return 2;
+			}
 
 			CHAR_AT(game, r, c) = letter;
 			CHAR_AT(solutions, r, c) = 0;
@@ -75,8 +88,11 @@ int main(int argc, char** argv){
 
 	words = (char*) malloc(64);
 	do
-		if (getline(&words, &words_len, inputFile) == -1)
-			return 2; // EOF
+		if (getline(&words, &words_len, inputFile) == -1) {
+			perror("\aERROR: Malformed input file (words not given)\n");
+			printFileHelper();
+			return 3; // EOF
+		}
 	while (*words == '\n');
 
 	char* str = words;
