@@ -1,10 +1,11 @@
 # WordFinder
 - Given the puzzel and the words, this program will highlight the answers. 
-- Unfortionatly this only supports the ASCII charset, anyone willing to add support 
-- The obvious next step is to make a word-find generator which I can pipe the output to
+- Unfortionatly this only supports the ASCII charset, anyone willing to add support is welcome to do so. :)
+- The obvious next step is to make a word-find generator which I can pipe the output to.
+- perhaps in the distant future I will add a GUI-frontend for this program using QT/GTK. but for now it's CLI.
 
 # Build and Run
-Pretty basic build and run. If someone who knows how to do makefiles would help, that sould be great.
+Pretty basic build and run. If someone who knows how to do makefiles would help, that would be great.
 ```
 $ git clone https://github.com/dvtate/wordfinder/
 $ cd wordfinder
