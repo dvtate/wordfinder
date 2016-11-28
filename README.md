@@ -10,10 +10,10 @@ Pretty basic build and run. If someone who knows how to do makefiles would help,
 ```
 $ git clone https://github.com/dvtate/wordfinder/
 $ cd wordfinder
----- unix-based ----
-$ gcc *.c -Wall -Wextra -o wordfinder #build
+---- unix-like ----
+$ gcc *.c -Wall -Wextra -o wordfinder # build
 $ ./wordfinder # run
----- windows ----
+---- windows ---- 
 > gcc *.c -Wall -Wextra -o wordfinder.exe # build
 > wordfinder.exe # run
 ```
