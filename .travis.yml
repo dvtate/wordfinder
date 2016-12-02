@@ -1,0 +1,8 @@
+language: c
+sudo: false
+
+compiler:
+  - gcc
+  - clang
+  
+script: gcc *.c -Wall -Wextra -o wordfinder
