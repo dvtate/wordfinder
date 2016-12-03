@@ -1,6 +1,6 @@
 # WordFinder 
 - Given the puzzel and the words, this program will highlight the answers. 
-- Unfortionatly this only supports the ASCII charset, anyone willing to add support is welcome to do so. :)
+- Unfortionatly this only supports the ASCII charset, anyone willing to add support for unicode is welcome to do so. :)
 - The obvious next step is to make a word-find generator which I can pipe the output to.
 - perhaps in the distant future I will add a GUI-frontend for this program using QT/GTK. but for now it's CLI.
 - *NOTE:* This project does not represent good C programming practices, and I can understand it being hard to read and not scalable. Performance is my main priority, so if you see any improovements, please feel free to send a pull-request.
@@ -13,7 +13,7 @@ $ cd wordfinder
 ---- unix-like ----
 $ gcc *.c --std=c99 -Wall -Wextra -o findwords # build
 $ ./findwords # run
----- windows ---- 
+---- windows ----
 > gcc *.c --std=c99 -Wall -Wextra -o findwords.exe # build
 > findwords.exe # run
 ```
