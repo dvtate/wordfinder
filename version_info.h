@@ -824,9 +824,8 @@ unsigned char ver_info_txt[9535] = { // this is a string...
 };
 uint16_t ver_info_txt_len = 9535;
 
-
-
-inline void printVersionInfo(){
+void printVersionInfo(void); // this is so lame, I know...
+void printVersionInfo(void){
   printf("%s", ver_info_txt);
 }
 

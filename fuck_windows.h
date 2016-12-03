@@ -71,6 +71,8 @@ int getline(char **lineptr, size_t *n, FILE *stream) {
 
 }
 
-#endif // _WIN32
+// _WIN32
+#endif
 
-#endif // FUCK_WINDOWS_H
+// FUCK_WINDOWS_H
+#endif
