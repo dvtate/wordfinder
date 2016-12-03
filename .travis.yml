@@ -4,5 +4,5 @@ sudo: false
 compiler:
   - gcc
   - clang
-  
-script: gcc *.c -Wall -Wextra -o wordfinder
+
+script: gcc *.c -Wall -Wextra -std=c11 -o findwords
