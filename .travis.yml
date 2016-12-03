@@ -5,4 +5,4 @@ compiler:
   - gcc
   - clang
 
-script: gcc *.c -Wall -Wextra -std=c11 -o findwords
+script: gcc *.c -Wall -Wextra --std=c11 -o findwords
