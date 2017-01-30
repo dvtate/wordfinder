@@ -6,3 +6,6 @@ compiler:
   - clang
 
 script: gcc *.c -Wall -Wextra --std=c99 -o findwords
+
+notifications:
+  email: false
