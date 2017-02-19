@@ -40,6 +40,12 @@ int main(int argc, char** argv){
 
 		inputFile = fopen(argv[1], "r");
 		silent = 1;
+		
+		// file not found
+		if (!inputFile) {
+			fprintf(stderr, "%s: error, file %s not found.\n", argv[0], argv[1]);
+			return 1;
+		}
 	}
 
 	/// TODO: program must ERROR if the file doesn't contain enough information
