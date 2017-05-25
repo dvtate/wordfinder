@@ -1,9 +1,12 @@
 # WordFinder 
 - Given the puzzle and the words, this program will highlight the answers in red. 
+- *NOTE:* This project does not represent good C programming practices, and I can understand it being hard to read and not scalable. If you see any performance improvements, please feel free to send a pull-request.
+
+# Possible Improvements:
 - Unfortionatly this only supports the ASCII charset, anyone willing to add support for unicode is welcome to do so. :)
 - The obvious next step is to make a word-find generator which I can pipe the output to.
 - perhaps in the distant future I will add a GUI-frontend for this program using QT/GTK. but for now it's CLI.
-- *NOTE:* This project does not represent good C programming practices, and I can understand it being hard to read and not scalable. If you see any performance improvements, please feel free to send a pull-request.
+- OCR for input of images (https://github.com/tesseract-ocr/tesseract)
 
 ![screenshot](https://raw.githubusercontent.com/dvtate/wordfinder/master/gnome-shell-screenshot-DOU4WY.png "example useage")
 
