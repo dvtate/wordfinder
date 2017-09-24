@@ -77,7 +77,7 @@ int main(int argc, char** argv){
 				letter = fgetc(inputFile);
 			while (letter == '\n' || isspace(letter));
 			if (letter == EOF) {
-				perror("\aERROR: Malformed input file (incomplete puzzle)\n");
+				perror("\aERROR: Malformed input (incomplete puzzle)\n");
 				printFileHelper();
 				return 2;
 			}
@@ -91,11 +91,13 @@ int main(int argc, char** argv){
 
 
 
-
-	words = (char*) malloc(64);
-	do
+	
+	words = (char*) malloc(words_len); // grown as needed
+	// keep checking for input every time they press enter without words
+	do 
+		// no words to find
 		if (getline(&words, &words_len, inputFile) == -1) {
-			perror("\aERROR: Malformed input file (words not given)\n");
+			perror("\aERROR: Malformed input (words not given)\n");
 			printFileHelper();
 			return 3; // EOF
 		}
@@ -110,29 +112,26 @@ int main(int argc, char** argv){
 
 	// time how long it takes to solve the puzzle
 	clock_t diff, start = clock();
-	findWords();
+	findWords(); // solve puzzle
 	diff = clock() - start;
-
-	int msec = diff * 1000000 / CLOCKS_PER_SEC;
-
-	printf("\nsolved in %d milliseconds %d microseconds", msec/1000, msec%1000);
+	
+	// give processing time
+	long usec = diff * 1000000 / CLOCKS_PER_SEC;
+	printf("\nsolved in %d milliseconds %d microseconds\n\n", 
+	       usec / 1000, usec % 1000);
 
 	// print the board with solutions highlighted in bright-red
-	putc('\n', stdout);
 	for (uint16_t r = 0; r < rows; r++) {
-		putc('\n', stdout);
 
 		for (uint16_t c = 0; c < cols; c++)
-
 			if (CHAR_AT(solutions, r, c))
-				// print the solutions in bright-red
+				// print the solution char in bright-red
 				printf("\x1B[31;1m%c\x1B[0m ", CHAR_AT(game, r, c));
 
 			else
 				printf("%c ",CHAR_AT(game, r, c));
+		
+		putc('\n', stdout);
 	}
-
-	// terminating newlines are nice
-	putc('\n', stdout);
 
 }
