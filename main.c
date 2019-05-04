@@ -117,7 +117,7 @@ int main(int argc, char** argv){
 	
 	// give processing time
 	long usec = diff * 1000000 / CLOCKS_PER_SEC;
-	printf("\nsolved in %d milliseconds %d microseconds\n\n", 
+	printf("\nsolved in %ld milliseconds %ld microseconds\n\n", 
 	       usec / 1000, usec % 1000);
 
 	// print the board with solutions highlighted in bright-red
