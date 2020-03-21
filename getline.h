@@ -1,5 +1,5 @@
-#ifndef FUCK_WINDOWS_H
-#define FUCK_WINDOWS_H
+#ifndef GETLINE_WINDOWS_H
+#define GETLINE_WINDOWS_H
 
 #ifdef _WIN32
 
@@ -69,5 +69,5 @@ int getline(char **lineptr, size_t *n, FILE *stream) {
 // _WIN32
 #endif
 
-// FUCK_WINDOWS_H
+// GETLINE_WINDOWS_H
 #endif
