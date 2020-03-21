@@ -10,7 +10,7 @@
 
 
 // this adds windows support (needed since windows isn't postix-compatible)
-#include "fuck_windows.h"
+#include "getline.h"
 
 uint16_t rows, cols;
 char** game, **solutions;
