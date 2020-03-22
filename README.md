@@ -1,6 +1,5 @@
 # WordFinder 
 - Given the puzzle and the words, this program will highlight the answers in red. 
-- *NOTE:* This project does not represent good C programming practices, and I can understand it being hard to read and not scalable. If you see any performance improvements, please feel free to send a pull-request.
 
 # Possible Improvements:
 - Unfortionatly this only supports the ASCII charset, anyone willing to add support for unicode is welcome to do so. :)
