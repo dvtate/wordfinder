@@ -6,7 +6,7 @@
 - Unfortionatly this only supports the ASCII charset, anyone willing to add support for unicode is welcome to do so. :)
 - The obvious next step is to make a word-find generator which I can pipe the output to.
 - perhaps in the distant future I will add a GUI-frontend for this program using QT/GTK. but for now it's CLI.
-- OCR for input of images (https://github.com/tesseract-ocr/tesseract)
+- maybe OCR for image input (https://github.com/tesseract-ocr/tesseract)
 
 ![screenshot](https://raw.githubusercontent.com/dvtate/wordfinder/master/gnome-shell-screenshot-DOU4WY.png "example useage")
 
